@@ -64,3 +64,4 @@ Temporary Items
 
 # End of https://www.gitignore.io/api/go,macos,visualstudiocode
 .vscode/settings.json
+!input
