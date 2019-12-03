@@ -32,13 +32,13 @@ func TestFuelCounterUpper(t *testing.T) {
 			args: args{
 				masses: []float64{1969},
 			},
-			want: 654,
+			want: 966,
 		}, {
 			name: "example 4",
 			args: args{
 				masses: []float64{100756},
 			},
-			want: 33583,
+			want: 50346,
 		},
 	}
 	for _, tt := range tests {
