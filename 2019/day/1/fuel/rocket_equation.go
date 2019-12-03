@@ -9,7 +9,7 @@ func CounterUpper(masses []float64) float64 {
 	var requiredFuel float64
 
 	for _, mass := range masses {
-		requiredFuel += moduelFuelRequierment(mass)
+		requiredFuel += moduleFuelRequirement(mass)
 	}
 
 	return requiredFuel
@@ -18,6 +18,6 @@ func CounterUpper(masses []float64) float64 {
 // Fuel required to launch a given module is based on its mass.
 // Specifically, to find the fuel required for a module, take its mass,
 // divide by three, round down, and subtract 2.
-func moduelFuelRequierment(mass float64) float64 {
+func moduleFuelRequirement(mass float64) float64 {
 	return math.Floor(mass/3) - 2
 }
