@@ -17,17 +17,11 @@ func TestIntcode(t *testing.T) {
 		want []int
 	}{
 		{
-			name: "Example 1",
-			args: args{
-				in0: []int{1, 10, 20, 30},
-			},
-			want: []int{1, 10, 20, 30},
-		}, {
 			name: "Example 2",
 			args: args{
 				in0: []int{1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50},
 			},
-			want: []int{1, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50},
+			want: []int{3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50},
 		}, {
 			name: "Example 3",
 			args: args{
