@@ -53,6 +53,36 @@ func Intcode(program []int) ([]int, error) {
 	return program, nil
 }
 
+// FindSolution searches for the target value by iterating through ALL possible values.
+func FindSolution(target, max int, initialState []int) (int, int, error) {
+	verb := 0
+	noun := 0
+	for verb <= max {
+		for noun <= max {
+			// reset state
+			program := append([]int(nil), initialState...)
+
+			// set test pair
+			program[1] = verb
+			program[2] = noun
+
+			// Run
+			out, err := Intcode(program)
+			if err != nil {
+				return -1, -1, err
+			}
+
+			// check output
+			if out[0] == target {
+				return verb, noun, nil
+			}
+			noun++
+		}
+		verb++
+	}
+	return verb, noun, fmt.Errorf("solution not found")
+}
+
 // PrintProgram is a quick and dirty printer.
 // It prints the program to console and only works for programs that have a step of 4.
 func PrintProgram(program []int) {

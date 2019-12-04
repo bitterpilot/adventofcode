@@ -12,16 +12,15 @@ import (
 )
 
 func main() {
-	file := "./1202"
-	input := input(file)
+	file := "./input"
+	initialState := input(file)
 
-	output, err := computer.Intcode(input)
+	noun, verb, err := computer.FindSolution(19690720, 99, initialState)
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
 
-	fmt.Println("The Program:")
-	computer.PrintProgram(output)
+	fmt.Println("The Pair:", noun, verb)
 }
 
 func input(file string) []int {
