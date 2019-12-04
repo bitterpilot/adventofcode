@@ -1,6 +1,6 @@
 package computer
 
-import "log"
+import "fmt"
 
 // Intcode is a program that reads a array of integers to perform operations.
 //
@@ -11,7 +11,7 @@ import "log"
 // For example, if your Intcode computer encounters 1,10,20,30,
 // it should read the values at positions 10 and 20, add those values,
 // and then overwrite the value at position 30 with their sum.
-func Intcode(program []int) []int {
+func Intcode(program []int) ([]int, error) {
 	const (
 		add      int = 1
 		multiply int = 2
@@ -44,11 +44,22 @@ func Intcode(program []int) []int {
 			program[destPtr] = result
 			opt = opt + step
 		case halt:
-			return program
+			return program, nil
 		default:
-			log.Fatalf("Unknown opt code %d at position %d", program[opt], opt)
+			return program, fmt.Errorf("Unknown opt code %d at position %d", program[opt], opt)
 		}
 	}
 
-	return program
+	return program, nil
+}
+
+// PrintProgram is a quick and dirty printer.
+// It prints the program to console and only works for programs that have a step of 4.
+func PrintProgram(program []int) {
+	opt := 0
+	for opt < len(program) {
+		code := program[opt : opt+4]
+		fmt.Printf("line: %3d, %v\n", opt, code)
+		opt = opt + 4
+	}
 }
