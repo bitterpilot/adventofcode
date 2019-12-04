@@ -20,7 +20,7 @@ func main() {
 		fmt.Printf("error: %v\n", err)
 	}
 
-	fmt.Println("The Pair:", noun, verb)
+	fmt.Printf("The Pair: %d, %d\n", noun, verb)
 }
 
 func input(file string) []int {

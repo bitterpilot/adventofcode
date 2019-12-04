@@ -55,9 +55,10 @@ func Intcode(program []int) ([]int, error) {
 
 // FindSolution searches for the target value by iterating through ALL possible values.
 func FindSolution(target, max int, initialState []int) (int, int, error) {
+	count := 0
 	verb := 0
-	noun := 0
 	for verb <= max {
+		noun := 0
 		for noun <= max {
 			// reset state
 			program := append([]int(nil), initialState...)
@@ -76,11 +77,13 @@ func FindSolution(target, max int, initialState []int) (int, int, error) {
 			if out[0] == target {
 				return verb, noun, nil
 			}
+			count++
 			noun++
 		}
 		verb++
 	}
-	return verb, noun, fmt.Errorf("solution not found")
+	fmt.Println(count)
+	return -1, -1, fmt.Errorf("solution not found")
 }
 
 // PrintProgram is a quick and dirty printer.
